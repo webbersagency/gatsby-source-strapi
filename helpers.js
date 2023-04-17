@@ -156,7 +156,7 @@ const extractFiles = (text, apiURL) => {
     }
   }
 
-  return files.filter(Boolean);
+  return files.filter(file => file.includes('http'));
 };
 
 const processFieldData = async (data, options) => {
