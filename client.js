@@ -1,5 +1,5 @@
 const { ApolloClient, InMemoryCache, HttpLink } = require("@apollo/client")
-const fetch = require("cross-fetch");
+const fetch = require("node-fetch");
 
 const clients = {};
 
