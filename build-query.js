@@ -13,7 +13,7 @@ const buildArgs = node => {
   const args = [];
   // Get all data for paginated fields.
   if (node?.args?.find(arg => arg.name === 'pagination')) {
-    args.push('pagination:{limit:1000}');
+    args.push('pagination:{limit:100000}');
   }
   return args.length ? `(${args.join(',')})` : '';
 }
@@ -136,7 +136,7 @@ const buildQueries = (operations, typesMap, pluginOptions) => {
       updatedAt && 'filters: { updatedAt: { gt: $updatedAt } }',
     ].filter(n => Boolean(n)).join(' ').replace(/(.+)/, '($1)');
     const variables = {
-      ...isCollectionType && { pagination: { start: 0, limit: 1000 } },
+      ...isCollectionType && { pagination: { start: 0, limit: 100000 } },
       ...(locale || localeDef) && { locale: operation.locale },
       ...(updatedAt || updatedAtDef) && { updatedAt: "1990-01-01T00:00:00.000Z" },
     };
